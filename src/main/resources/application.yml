@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lexiweb
+    username: postgres
+    password: postgres
+
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        ddl-auto: update
+        shoq-sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+# App Properties
+lexiweb:
+  app:
+    jwtSecret: dAkorlPwlpQ2921K20kdj39mx1
+    jwtExpirationMs: 86400000
