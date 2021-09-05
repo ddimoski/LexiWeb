@@ -4,10 +4,6 @@ import javax.persistence.*
 
 @Entity
 class Question(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long,
-
     @OneToOne
     private val mainWord: Word,
 
@@ -16,4 +12,8 @@ class Question(
 
     @OneToMany
     private val incorrectWords: List<Word>
-)
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private val id: Long = 0
+}

@@ -6,10 +6,8 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Word (
+class Word (private val name: String) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long,
-
-    private val name: String
-)
+    private val id: Long = 0
+}

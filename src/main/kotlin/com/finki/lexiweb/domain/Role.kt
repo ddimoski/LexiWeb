@@ -6,10 +6,10 @@ import javax.persistence.*
 @Entity
 //@Table(name = "roles")
 class Role(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long,
-
     @Enumerated(EnumType.STRING)
     private val name: RoleEnum
-)
+) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private val id: Long = 0
+}

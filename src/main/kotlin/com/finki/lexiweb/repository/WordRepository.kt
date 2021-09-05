@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface WordRepository : JpaRepository<Word, Long> {
+    fun existsByName(name: String): Boolean
+
+    fun findByName(name: String): Word
 }
