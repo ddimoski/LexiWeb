@@ -1,14 +1,24 @@
 package com.finki.lexiweb.controller
 
+import com.finki.lexiweb.config.JwtUtils
+import com.finki.lexiweb.domain.User
+import com.finki.lexiweb.domain.UserPrincipal
 import com.finki.lexiweb.dto.ChangePasswordDTO
+import com.finki.lexiweb.dto.JwtDTO
 import com.finki.lexiweb.dto.UserDTO
 import com.finki.lexiweb.service.UserService
+import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
 @Controller
 @RequestMapping("/api/user")
-class UserController(private val userService: UserService) {
+class UserController(private val userService: UserService,
+                     private val authenticationManager: AuthenticationManager,
+                     private val jwtUtils: JwtUtils
+) {
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id: Long) = userService.getById(id)
@@ -16,11 +26,24 @@ class UserController(private val userService: UserService) {
     @PostMapping("/register")
     fun register(@RequestBody request: UserDTO) = userService.register(request)
 
-//    @PostMapping("/login")
-//    fun login(@RequestBody request: UserDTO) = userService.login(request)
+    @PostMapping("/register")
+    fun registerUser(@RequestBody registerRequest: UserDTO): UserDTO {
+        val user = userService.register(registerRequest)
+        return UserDTO(user.id, user.username, user.password, user.email, user.firstName, user.lastName,
+        user.dateOfBirth)
+    }
 
-//    @PostMapping("/{id}/change-password")
-//    fun changePassword(@PathVariable id: Long, request: ChangePasswordDTO) = userService.changePassword(id, request)
+    @PostMapping("/login")
+    fun authenticateUser(@RequestBody loginRequest: UserDTO): JwtDTO {
+        val authentication = authenticationManager
+            .authenticate(UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password))
+        SecurityContextHolder.getContext().authentication = authentication
+        val jwt = jwtUtils.generateJwtToken(authentication)
+        val userDetails = userService.loadUserByUsername(loginRequest.username)
+        val user: User = userService.findByUsername(loginRequest.username)
+        val role: String = userDetails.authorities.stream().findFirst().get().toString()
 
+        return JwtDTO(jwt, user.id, user.username, user.email, role)
+    }
 
 }

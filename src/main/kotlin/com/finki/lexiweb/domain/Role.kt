@@ -7,7 +7,7 @@ import javax.persistence.*
 //@Table(name = "roles")
 class Role(
     @Enumerated(EnumType.STRING)
-    private val name: RoleEnum
+    val name: RoleEnum
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

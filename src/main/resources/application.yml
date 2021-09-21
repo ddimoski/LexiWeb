@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/lexiweb
-    username: postgres
-    password: postgres
+    username: lexiweb
+    password: lexiweb
 
     hikari:
       connectionTimeout: 20000
@@ -21,5 +21,5 @@ spring:
 # App Properties
 lexiweb:
   app:
-    jwtSecret: dAkorlPwlpQ2921K20kdj39mx1
+    jwtSecret: dAkorlPwlpQ2921K20kdj39mx1ko900*/7hz#1QmfTl6$
     jwtExpirationMs: 86400000

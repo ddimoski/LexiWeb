@@ -12,11 +12,11 @@ class User(
 
     private val password: String,
 
-    private val firstName: String,
+    val firstName: String,
 
-    private val lastName: String,
+    val lastName: String,
 
-    private val email: String,
+    val email: String,
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -24,13 +24,13 @@ class User(
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
-    private val roles: Set<Role> = HashSet(),
+    val roles: Set<Role> = HashSet(),
 
-    private val dateOfBirth: ZonedDateTime
+    val dateOfBirth: ZonedDateTime
 ) : UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long  = 0
+    val id: Long  = 0
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         TODO("Not yet implemented")
     }
@@ -39,9 +39,7 @@ class User(
         TODO("Not yet implemented")
     }
 
-    override fun getUsername(): String {
-        TODO("Not yet implemented")
-    }
+    override fun getUsername(): String = this.username
 
     override fun isAccountNonExpired(): Boolean {
         TODO("Not yet implemented")
