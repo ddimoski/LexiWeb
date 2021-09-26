@@ -12,9 +12,7 @@ import org.springframework.stereotype.Service
 import kotlin.RuntimeException
 
 @Service
-class UserService (private val userRepository: UserRepository,
-                   private val passwordEncoder: PasswordEncoder
-) : UserDetailsService {
+class UserService (private val userRepository: UserRepository) : UserDetailsService {
 
     fun getById(id: Long) = userRepository.getById(id)
 
@@ -30,7 +28,7 @@ class UserService (private val userRepository: UserRepository,
         }
         val roles = HashSet<Role>()
         roles.add(Role(RoleEnum.USER))
-        val user = User(request.username, passwordEncoder.encode(request.password), request.firstName, request.lastName,
+        val user = User(request.username, request.password, request.firstName, request.lastName,
                         request.email, roles, request.dateOfBirth)
         userRepository.save(user)
         return user

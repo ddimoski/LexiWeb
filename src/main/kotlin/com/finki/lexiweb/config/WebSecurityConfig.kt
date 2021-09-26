@@ -31,9 +31,10 @@ class WebSecurityConfig(val userService: UserService,
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .authorizeRequests().antMatchers("/api/account/**").permitAll()
-            .antMatchers("/", "/user", "/admin", "/users").permitAll()
-            .anyRequest().authenticated()
+            .authorizeRequests().antMatchers("*").permitAll()
+//            .authorizeRequests().antMatchers("/api/account/**").permitAll()
+//            .antMatchers("/", "/user", "/admin", "/users").permitAll()
+//            .anyRequest().authenticated()
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)
     }

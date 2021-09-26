@@ -10,6 +10,7 @@ import com.finki.lexiweb.service.UserService
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
@@ -17,18 +18,18 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/user")
 class UserController(private val userService: UserService,
                      private val authenticationManager: AuthenticationManager,
-                     private val jwtUtils: JwtUtils
+                     private val jwtUtils: JwtUtils,
+                     private val passwordEncoder: PasswordEncoder
 ) {
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id: Long) = userService.getById(id)
 
     @PostMapping("/register")
-    fun register(@RequestBody request: UserDTO) = userService.register(request)
-
-    @PostMapping("/register")
     fun registerUser(@RequestBody registerRequest: UserDTO): UserDTO {
-        val user = userService.register(registerRequest)
+        val userDto = UserDTO(null, registerRequest.username, passwordEncoder.encode(registerRequest.password),
+        registerRequest.email, registerRequest.firstName, registerRequest.lastName, registerRequest.dateOfBirth)
+        val user = userService.register(userDto)
         return UserDTO(user.id, user.username, user.password, user.email, user.firstName, user.lastName,
         user.dateOfBirth)
     }
