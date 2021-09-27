@@ -10,10 +10,15 @@ spring:
 
   jpa:
     properties:
+      javax:
+        persistence:
+          create-database-schemas: true
       hibernate:
+        default_schema: public
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
         ddl-auto: update
-        shoq-sql: true
+        show-sql: true
+        format_sql: true
         jdbc:
           lob:
             non_contextual_creation: true
