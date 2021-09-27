@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../interfaces/user.interface';
 
-const API_URL = '/api/user';
+const API_URL = 'http://localhost:8080/api/user';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -20,12 +21,8 @@ export class UserService {
     }, httpOptions);
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(API_URL + `${API_URL}/register`, {
-      username,
-      email,
-      password
-    }, httpOptions);
+  register(registerRequest: User): Observable<any> {
+    return this.http.post(`${API_URL}/register`, registerRequest, httpOptions);
   }
 
 

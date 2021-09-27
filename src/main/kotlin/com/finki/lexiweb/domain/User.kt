@@ -6,7 +6,7 @@ import java.time.ZonedDateTime
 import javax.persistence.*
 
 @Entity
-//@Table(name = "users")
+@Table(name = "users")
 class User(
     private val username: String,
 
@@ -18,10 +18,10 @@ class User(
 
     val email: String,
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     @JoinTable(
         name = "user_roles",
-        joinColumns = [JoinColumn(name = "user_id")],
+        joinColumns = [JoinColumn(name = "id")],
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     )
     val roles: Set<Role> = HashSet(),
@@ -31,6 +31,7 @@ class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long  = 0
+
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         TODO("Not yet implemented")
     }

@@ -3,6 +3,7 @@ package com.finki.lexiweb.domain
 import javax.persistence.*
 
 @Entity
+@Table(name = "questions")
 class Question(
     @OneToOne
     private val mainWord: Word,

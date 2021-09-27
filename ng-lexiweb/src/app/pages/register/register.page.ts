@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'register',
@@ -19,15 +21,26 @@ export class RegisterPage implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
-
-    this.authService.register(username, email, password).subscribe(
+    console.log(this.form)
+    let timestamp = Date.parse(this.form.dateOfBirth)
+    let dateOfBirth = new Date(timestamp)
+    console.log(timestamp)
+    let request: User
+    request = {
+      username: this.form.username,
+      password: this.form.password,
+      firstName: this.form.firstName,
+      lastName: this.form.lastName,
+      email: this.form.email,
+      dateOfBirth: dateOfBirth
+    } as User;
+    this.userService.register(request).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-lexiweb"
+    }
+  },
+  "defaultProject": "ng-lexiweb",
+  "cli": {
+    "analytics": false
+  }
 }

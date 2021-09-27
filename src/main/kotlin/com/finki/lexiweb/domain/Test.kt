@@ -3,6 +3,7 @@ package com.finki.lexiweb.domain
 import javax.persistence.*
 
 @Entity
+@Table(name = "tests")
 class Test(
     private val name: String,
 

@@ -4,7 +4,7 @@ import com.finki.lexiweb.domain.enums.RoleEnum
 import javax.persistence.*
 
 @Entity
-//@Table(name = "roles")
+@Table(name = "roles")
 class Role(
     @Enumerated(EnumType.STRING)
     val name: RoleEnum
