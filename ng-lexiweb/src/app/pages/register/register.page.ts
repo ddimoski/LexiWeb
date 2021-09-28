@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
 
@@ -47,6 +46,7 @@ export class RegisterPage implements OnInit {
         this.isSignUpFailed = false;
       },
       err => {
+        console.log(err)
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }

@@ -9,22 +9,42 @@ import { HomePage } from './pages/home/home.page';
 import { LoginPage } from './pages/login/login.page';
 import { RegisterPage } from './pages/register/register.page';
 import { ProfilePage } from './pages/profile/profile.page';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './app-material.module';
+import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { TestListPage } from './pages/tests/test-list/test-list.page';
+import { RhymingTestPage } from './pages/tests/rhyming-test/rhyming-test.page';
+import { FillInTheBlanksTestPage } from './pages/tests/fill-in-the-blanks-test/fill-in-the-blanks-test.page';
+import { LexiComponent } from './components/lexi/lexi.component';
+import { SpeechBubbleComponent } from './components/speech-bubble/speech-bubble.component';
+
+const pages = [
+  AppComponent,
+  HomePage,
+  LoginPage,
+  RegisterPage,
+  ProfilePage,
+  TestListPage,
+  RhymingTestPage,
+  FillInTheBlanksTestPage,
+  LexiComponent,
+  SpeechBubbleComponent
+];
+
+const modules = [
+  BrowserModule,
+  AppRoutingModule,
+  FormsModule,
+  HttpClientModule,
+  FormsModule,
+  MaterialModule,
+  BrowserAnimationsModule
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePage,
-    LoginPage,
-    RegisterPage,
-    ProfilePage
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
+  declarations: [...pages],
+  imports: [...modules],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

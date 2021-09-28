@@ -7,6 +7,7 @@ import com.finki.lexiweb.dto.ChangePasswordDTO
 import com.finki.lexiweb.dto.JwtDTO
 import com.finki.lexiweb.dto.UserDTO
 import com.finki.lexiweb.service.UserService
+import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
@@ -26,16 +27,16 @@ class UserController(private val userService: UserService,
     fun getById(@PathVariable id: Long) = userService.getById(id)
 
     @PostMapping("/register")
-    fun registerUser(@RequestBody registerRequest: UserDTO): UserDTO {
+    fun registerUser(@RequestBody registerRequest: UserDTO): ResponseEntity<UserDTO> {
         val userDto = UserDTO(null, registerRequest.username, passwordEncoder.encode(registerRequest.password),
         registerRequest.email, registerRequest.firstName, registerRequest.lastName, registerRequest.dateOfBirth)
         val user = userService.register(userDto)
-        return UserDTO(user.id, user.username, user.password, user.email, user.firstName, user.lastName,
-        user.dateOfBirth)
+        return ResponseEntity.ok(UserDTO(user.id, user.username, user.password, user.email, user.firstName, user.lastName,
+        user.dateOfBirth))
     }
 
     @PostMapping("/login")
-    fun authenticateUser(@RequestBody loginRequest: UserDTO): JwtDTO {
+    fun authenticateUser(@RequestBody loginRequest: UserDTO): ResponseEntity<JwtDTO> {
         val authentication = authenticationManager
             .authenticate(UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password))
         SecurityContextHolder.getContext().authentication = authentication
@@ -44,7 +45,7 @@ class UserController(private val userService: UserService,
         val user: User = userService.findByUsername(loginRequest.username)
         val role: String = userDetails.authorities.stream().findFirst().get().toString()
 
-        return JwtDTO(jwt, user.id, user.username, user.email, role)
+        return ResponseEntity.ok(JwtDTO(jwt, user.id, user.username, user.email, role))
     }
 
 }

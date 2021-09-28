@@ -16,8 +16,8 @@ export class UserService {
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(`${API_URL}/login`, {
-      username,
-      password
+      username: username,
+      password: password
     }, httpOptions);
   }
 

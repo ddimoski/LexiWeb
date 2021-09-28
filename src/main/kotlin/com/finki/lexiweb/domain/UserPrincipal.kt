@@ -7,9 +7,8 @@ import java.util.stream.Collectors
 
 class UserPrincipal(val user: User) : UserDetails {
     override fun getAuthorities(): Collection<SimpleGrantedAuthority> =
-        user.roles.stream()
-            .map { SimpleGrantedAuthority(it.name.toString()) }
-            .collect(Collectors.toList())
+        listOf(SimpleGrantedAuthority(user.roles.first().name.toString()))
+//        user.roles.map { SimpleGrantedAuthority(it.name.toString()) }
 
     override fun isEnabled(): Boolean = true
 
