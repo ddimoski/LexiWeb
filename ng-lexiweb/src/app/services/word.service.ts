@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Test } from '../interfaces/test.interface';
 
-const API_URL = 'http://localhost:8080/api/test';
+const API_URL = 'http://localhost:8080/api/words';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -11,15 +10,10 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class TestService {
+export class WordService {
   constructor(private http: HttpClient) { }
 
-  getAllTests(): Observable<any> {
-    return this.http.get(`${API_URL}/all`);
+  getTenRandomWords(): Observable<any> {
+    return this.http.get(`${API_URL}/random-10`);
   }
-
-  getTestById(id: number): Observable<any> {
-    return this.http.get(`${API_URL}/${id}`);
-  }
-
 }

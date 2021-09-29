@@ -1,6 +1,5 @@
 package com.finki.lexiweb.controller
 
-import com.finki.lexiweb.domain.Test
 import com.finki.lexiweb.dto.TestDTO
 import com.finki.lexiweb.service.TestService
 import org.springframework.stereotype.Controller
