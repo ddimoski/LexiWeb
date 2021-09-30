@@ -1,1 +1,9 @@
-<div></div>
+<div class='container m-4'>
+  <lexi [mood]='"PROUD"'
+        [message]='"Ова се тестови со рима. Одбери еден тест од листата долу за да можеш да вежбаш"'></lexi>
+  <div class='align-content-center test'>
+    <div *ngFor='let test of allTests'>
+      <button type="button" class="btn btn-link" (click)='openTest(test.id)'>{{test.name}}</button>
+    </div>
+  </div>
+</div>

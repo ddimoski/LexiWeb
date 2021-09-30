@@ -1,7 +1,7 @@
 <!--Source code for the base of this component downloaded from:
 https://gist.github.com/maxbizbd/fb8619af8d3020fc6a99ecbeb493946e (open source licence)-->
 <div class="container">
-  <div class="emoji-container">
+  <div class="emoji-container d-inline-flex m-2">
 
     <!--NEUTRAL-->
     <div class="icon" *ngIf='mood == "NEUTRAL"'>
@@ -348,7 +348,7 @@ https://gist.github.com/maxbizbd/fb8619af8d3020fc6a99ecbeb493946e (open source l
         </div>
       </div>
     </div>
-    <speech-bubble [message]='"Здраво, јас сум жабата Лекси! Добредојде на сајтот"'></speech-bubble>
+    <speech-bubble [message]='this.message'></speech-bubble>
   </div>
 
 </div>

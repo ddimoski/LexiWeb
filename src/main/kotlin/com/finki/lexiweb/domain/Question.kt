@@ -6,15 +6,15 @@ import javax.persistence.*
 @Table(name = "questions")
 class Question(
     @OneToOne
-    private val mainWord: Word,
+    val mainWord: Word,
 
     @OneToOne
-    private val matchingWord: Word,
+    val matchingWord: Word,
 
     @OneToMany
-    private val incorrectWords: List<Word>
+    val incorrectWords: List<Word>
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long = 0
+    val id: Long = 0
 }

@@ -1,5 +1,14 @@
 <div class="container">
-  <header class="jumbotron">
-    здраво
-  </header>
+  <lexi [mood]='this.mood'
+        [message]='this.message'></lexi>
+  <div *ngIf='!isLoggedIn'
+    class='d-flex justify-content-center pl-2 pr-2'>
+    <button class='btn btn-custom m-3' (click)='loginLink()'>Најави се</button>
+    <button class='btn btn-custom m-3' (click)='registerLink()'>Регистрирај се</button>
+  </div>
+  <div *ngIf='isLoggedIn'
+       class='d-flex justify-content-center pl-2 pr-2'>
+    <button class='btn btn-custom m-3' (click)='testsLink()'>Отвори ги вежбите</button>
+    <button class='btn btn-custom m-3' (click)='dyslexiaLink()'>Прочитај повеќе за дислексијата</button>
+  </div>
 </div>

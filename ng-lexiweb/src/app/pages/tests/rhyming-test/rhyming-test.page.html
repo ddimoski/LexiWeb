@@ -1,0 +1,13 @@
+<div class='container'>
+
+  <div *ngIf='this.test' class='m-5'>
+    <lexi [mood]='this.mood'
+          [message]='this.message'>
+    </lexi>
+    <div *ngFor='let word of availableWords' class='m-3 pl-2 pr-2 center-content'>
+      <button type="button" class="btn btn-outline-success" (click)='checkIfCorrect(word)'>{{word}}</button>
+    </div>
+
+  </div>
+
+</div>

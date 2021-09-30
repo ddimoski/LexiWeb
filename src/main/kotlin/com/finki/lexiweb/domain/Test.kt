@@ -5,10 +5,10 @@ import javax.persistence.*
 @Entity
 @Table(name = "tests")
 class Test(
-    private val name: String,
+    val name: String,
 
     @OneToMany
-    private val questions: List<Question>
+    val questions: List<Question>
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

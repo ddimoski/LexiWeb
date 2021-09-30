@@ -4,8 +4,11 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "words")
-class Word (private val name: String) {
+class Word (
+
+    val name: String
+    ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long = 0
+    val id: Long = 0
 }

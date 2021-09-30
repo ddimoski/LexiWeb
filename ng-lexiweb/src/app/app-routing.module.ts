@@ -5,6 +5,8 @@ import { ProfilePage } from './pages/profile/profile.page';
 import { LoginPage } from './pages/login/login.page';
 import { RegisterPage } from './pages/register/register.page';
 import { TestListPage } from './pages/tests/test-list/test-list.page';
+import { AboutDyslexiaPage } from './pages/about-dyslexia/about-dyslexia.page';
+import { RhymingTestPage } from './pages/tests/rhyming-test/rhyming-test.page';
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'login', component: LoginPage },
   { path: 'register', component: RegisterPage },
   { path: 'profile', component: ProfilePage },
+  { path: 'test/:id', component: RhymingTestPage },
   { path: 'tests', component: TestListPage },
+  { path: 'about-dyslexia', component: AboutDyslexiaPage },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

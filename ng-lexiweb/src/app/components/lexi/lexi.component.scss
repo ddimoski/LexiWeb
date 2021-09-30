@@ -63,6 +63,7 @@ body {
     justify-items: center;
     align-items: flex-start;
     flex-wrap: wrap;
+    width: 60%;
 
     .icon {
       margin-right: 40px;
@@ -78,6 +79,7 @@ body {
 /* icon main styles !!!YOU NEED THEM */
 
 .icon {
+  margin-top: 2em;
   width: 125px;
   height: 120px;
   position: relative;

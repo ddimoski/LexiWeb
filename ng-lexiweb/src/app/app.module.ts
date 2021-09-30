@@ -17,6 +17,7 @@ import { RhymingTestPage } from './pages/tests/rhyming-test/rhyming-test.page';
 import { FillInTheBlanksTestPage } from './pages/tests/fill-in-the-blanks-test/fill-in-the-blanks-test.page';
 import { LexiComponent } from './components/lexi/lexi.component';
 import { SpeechBubbleComponent } from './components/speech-bubble/speech-bubble.component';
+import { AboutDyslexiaPage } from './pages/about-dyslexia/about-dyslexia.page';
 
 const pages = [
   AppComponent,
@@ -28,7 +29,8 @@ const pages = [
   RhymingTestPage,
   FillInTheBlanksTestPage,
   LexiComponent,
-  SpeechBubbleComponent
+  SpeechBubbleComponent,
+  AboutDyslexiaPage
 ];
 
 const modules = [

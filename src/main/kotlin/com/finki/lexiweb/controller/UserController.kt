@@ -2,8 +2,6 @@ package com.finki.lexiweb.controller
 
 import com.finki.lexiweb.config.JwtUtils
 import com.finki.lexiweb.domain.User
-import com.finki.lexiweb.domain.UserPrincipal
-import com.finki.lexiweb.dto.ChangePasswordDTO
 import com.finki.lexiweb.dto.JwtDTO
 import com.finki.lexiweb.dto.UserDTO
 import com.finki.lexiweb.service.UserService
@@ -12,10 +10,9 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 
-@Controller
+@RestController
 @RequestMapping("/api/user")
 class UserController(private val userService: UserService,
                      private val authenticationManager: AuthenticationManager,
