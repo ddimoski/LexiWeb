@@ -8,6 +8,16 @@
   padding: 24px;
   text-align: center;
   color: #000;
+  display:flex;
+}
+
+@media only screen and (max-width: 800px) {
+  .bubble {
+    width: 200px;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 18px;
+  }
 }
 
 .bubble-bottom-left:before {

@@ -27,8 +27,17 @@ body {
   background-color: $bg-color;
 }
 
+@media only screen and (max-width: 800px) {
+  .container {
+    margin: 30px auto 0px auto;
+  }
+  .emoji-container {
+    //width: 600px;
+  }
+}
+
 .container {
-  width: 950px;
+  max-width: 950px;
   margin: 70px auto 0px auto;
   text-align: center;
 
@@ -59,12 +68,13 @@ body {
   }
 
   .emoji-container {
+    border: #C71F1C 2px solid;
     display: flex;
     justify-items: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    width: 60%;
-
+    //width: 60%;
+    //margin: auto;
     .icon {
       margin-right: 40px;
       margin-bottom: 40px;
@@ -83,6 +93,7 @@ body {
   width: 125px;
   height: 120px;
   position: relative;
+  display: flex;
 
   //frog styles
   .frog {

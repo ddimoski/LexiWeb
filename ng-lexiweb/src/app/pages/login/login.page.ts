@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { LexiComponent } from '../../components/lexi/lexi.component';
 
 @Component({
   selector: 'login',
@@ -16,13 +18,22 @@ export class LoginPage implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  message: string;
+  mood: string;
 
-  constructor(private userService: UserService, private tokenStorage: TokenStorageService) { }
+  @ViewChild('lexi') lexi: LexiComponent
+
+  constructor(private userService: UserService,
+              private tokenStorage: TokenStorageService,
+              private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+    } else {
+      this.message = "Внеси ги твоите податоци за да се најавиш на сајтот";
+      this.mood = "NEUTRAL";
     }
   }
 
@@ -37,16 +48,23 @@ export class LoginPage implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        this.mood = "PROUD"
+        this.message = `Успешна најава, ${username}! Сега може да ги пристапите вежбите`;
       },
       err => {
         this.errorMessage = err.error.message;
+        this.mood = "CROSS_EYED"
+        this.message = err.error.message;
         this.isLoginFailed = true;
       }
     );
   }
 
-  reloadPage(): void {
-    window.location.reload();
+  testsLink() {
+    this.router.navigate(['/tests']);
+  }
+
+  homeLink(): void {
+    this.router.navigate(['/']);
   }
 }

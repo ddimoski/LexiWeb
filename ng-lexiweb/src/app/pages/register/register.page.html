@@ -1,10 +1,7 @@
-<div class="col-md-8">
-  <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
+<div class="container">
+  <div>
+    <lexi [mood]='mood'
+          [message]='message'></lexi>
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -122,7 +119,10 @@
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block">Регистрирај се</button>
+        <button class="btn btn-primary btn-block btn-color">Регистрирај се</button>
+      </div>
+      <div class="form-group pb-4">
+        <button class="btn btn-primary btn-block btn-color" (click)='homeLink()'>Врати се на почетна</button>
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">

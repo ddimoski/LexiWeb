@@ -1,10 +1,7 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
+<div class="container">
+  <div>
+    <lexi [mood]='mood'
+          [message]='message'></lexi>
     <form
       *ngIf="!isLoggedIn"
       name="form"
@@ -46,30 +43,31 @@
           role="alert"
           *ngIf="password.errors && f.submitted"
         >
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">Мора да се внесе лозинка</div>
           <div *ngIf="password.errors.minlength">
             Password must be at least 6 characters
           </div>
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block">
+        <button class="btn btn-primary btn-block btn-color">
           Login
         </button>
       </div>
-      <div class="form-group">
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="f.submitted && isLoginFailed"
-        >
-          Login failed: {{ errorMessage }}
-        </div>
-      </div>
+<!--      <div class="form-group">-->
+<!--        <div-->
+<!--          class="alert alert-danger"-->
+<!--          role="alert"-->
+<!--          *ngIf="f.submitted && isLoginFailed"-->
+<!--        >-->
+<!--          Неуспешна најава: {{ errorMessage }}-->
+<!--        </div>-->
+<!--      </div>-->
     </form>
 
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
+    <div class='d-flex justify-content-center pl-2 pr-2' *ngIf="isLoggedIn">
+      <button class='btn btn-custom m-3' (click)='testsLink()'>Отвори ги вежбите</button>
+      <button class='btn btn-custom m-3' (click)='homeLink()'>Оди на почетната страна</button>
     </div>
   </div>
 </div>

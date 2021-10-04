@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'register',
@@ -19,10 +20,15 @@ export class RegisterPage implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  message: string;
+  mood: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.message = "Внеси ги твоите податоци за да се регистрираш на сајтот";
+    this.mood = "NEUTRAL";
   }
 
   onSubmit(): void {
@@ -51,5 +57,8 @@ export class RegisterPage implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+  }
+  homeLink() {
+    this.router.navigate(['/']);
   }
 }

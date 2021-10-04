@@ -10,6 +10,6 @@ import javax.servlet.http.HttpServletResponse
 class AuthEntryPointJwt : AuthenticationEntryPoint {
 
     override fun commence(request: HttpServletRequest?, response: HttpServletResponse?, authException: AuthenticationException?) {
-        response?.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized")
+        response?.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Грешка: неточни податоци. Обиди се повторно")
     }
 }
