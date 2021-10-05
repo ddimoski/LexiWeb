@@ -49,7 +49,8 @@ export class LoginPage implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         this.mood = "PROUD"
-        this.message = `Успешна најава, ${username}! Сега може да ги пристапите вежбите`;
+        this.message = `Здраво, ${username}! Сега може да ги пристапите вежбите`;
+        window.open('/', '_self')
       },
       err => {
         this.errorMessage = err.error.message;

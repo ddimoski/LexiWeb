@@ -5,7 +5,13 @@
           [message]='this.message'>
     </lexi>
     <div *ngFor='let word of availableWords' class='m-3 pl-2 pr-2 center-content'>
-      <button type="button" class="btn btn-outline-success" (click)='checkIfCorrect(word)'>{{word}}</button>
+      <button type="button" class="btn btn-color btn-width" (click)='checkIfCorrect(word)'>{{word}}</button>
+    </div>
+    <div *ngIf='isCurrentQuestionAnsweredCorrectly' class='m-5 pl-2 pr-2 center-content'>
+      <button type="button" class="btn btn-color next-question-btn" (click)='nextQuestion()'>Оди на наредно прашање</button>
+    </div>
+    <div *ngIf='showBackToTestsButton' class='m-5 pl-2 pr-2 center-content'>
+      <button type="button" class="btn btn-color" (click)='openTests()'>Врати се назад на листата со тестови</button>
     </div>
 
   </div>
