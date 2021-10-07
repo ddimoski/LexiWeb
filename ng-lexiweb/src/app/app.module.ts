@@ -18,6 +18,8 @@ import { FillInTheBlanksTestPage } from './pages/tests/fill-in-the-blanks-test/f
 import { LexiComponent } from './components/lexi/lexi.component';
 import { SpeechBubbleComponent } from './components/speech-bubble/speech-bubble.component';
 import { AboutDyslexiaPage } from './pages/about-dyslexia/about-dyslexia.page';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InstructionsPage } from './pages/instructions/instructions.page';
 
 const pages = [
   AppComponent,
@@ -30,7 +32,8 @@ const pages = [
   FillInTheBlanksTestPage,
   LexiComponent,
   SpeechBubbleComponent,
-  AboutDyslexiaPage
+  AboutDyslexiaPage,
+  InstructionsPage
 ];
 
 const modules = [
@@ -40,12 +43,13 @@ const modules = [
   HttpClientModule,
   FormsModule,
   MaterialModule,
-  BrowserAnimationsModule
+  BrowserAnimationsModule,
+  FontAwesomeModule
 ];
 
 @NgModule({
   declarations: [...pages],
-  imports: [...modules],
+  imports: [...modules, FontAwesomeModule],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

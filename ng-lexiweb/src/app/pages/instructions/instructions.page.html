@@ -1,0 +1,25 @@
+<div class='container'>
+  <lexi [mood]='this.mood'
+        [message]='this.message'>
+  </lexi>
+  <div class='center-content'>
+    <button type='button' class='btn icon-custom' (click)='toggleSound()'>
+      <fa-icon [icon]='faVolumeUp'></fa-icon>
+    </button>
+  </div>
+
+  <div class='custom-content center-content'>
+    <p>
+      Инструкции: Треба да најдеш зборови коишто се римуваат.
+      <br>
+      Два зборови се римуваат ако звучат слично еден со друг.
+      <br>
+      Пример: кралица - сијалица.
+    </p>
+    <br>
+    <div class='instructions'>
+      <button type='button' class='btn btn-color instructions-btn' (click)='openTests()'>Врати се назад</button>
+    </div>
+  </div>
+
+</div>

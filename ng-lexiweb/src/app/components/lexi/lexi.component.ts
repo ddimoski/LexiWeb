@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'lexi',
@@ -9,8 +8,10 @@ import { UserService } from '../../services/user.service';
 export class LexiComponent implements OnInit {
   @Input() mood: string;
   @Input() message: string;
+  @Input() playSound = false;
+  @Input() fileName: string;
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
 

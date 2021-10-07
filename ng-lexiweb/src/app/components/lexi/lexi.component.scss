@@ -68,11 +68,12 @@ body {
   }
 
   .emoji-container {
-    border: #C71F1C 2px solid;
+    //border: #C71F1C 2px solid;
     display: flex;
     justify-items: center;
     align-items: flex-start;
     flex-wrap: wrap;
+    padding-bottom: 1em;
     //width: 60%;
     //margin: auto;
     .icon {

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TestService } from '../../../services/test.service';
 import { Test } from '../../../interfaces/test.interface';
 import { range } from 'rxjs';
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'rhyming-test',
@@ -21,6 +22,9 @@ export class RhymingTestPage implements OnInit {
   isCurrentQuestionAnsweredCorrectly = false
   currentIdx = 0;
   showBackToTestsButton = false;
+  shouldShowSoundButton = false;
+  fileName: string;
+  faVolumeUp = faVolumeUp
 
   constructor(private route: ActivatedRoute,
               private testService: TestService,
@@ -49,6 +53,8 @@ export class RhymingTestPage implements OnInit {
     let mainWord = this.test.questions[questionIndex].mainWord.toUpperCase()
     this.message = `Одбери кој од понудените зборови се римува со зборот ${mainWord}`
     this.mood = 'BIG_SMILE'
+    this.shouldShowSoundButton = true;
+    this.fileName = mainWord.toLowerCase();
     // loop through the incorrect words and add them to the list of available words
     range(0, 3).forEach(wordIndex => {
       console.log(this.test.questions[questionIndex].incorrectWords[wordIndex])
@@ -69,7 +75,8 @@ export class RhymingTestPage implements OnInit {
       if (this.currentIdx == this.numberOfQuestions - 1) {
         this.mood = "SATISFIED";
         this.message = "Честитки! Успешно го завши тестот!";
-        this.availableWords = Array<string>()
+        this.shouldShowSoundButton = false;
+        this.availableWords = Array<string>();
         this.isCurrentQuestionAnsweredCorrectly = false;
         this.showBackToTestsButton = true;
         return;
@@ -77,9 +84,11 @@ export class RhymingTestPage implements OnInit {
       this.mood = "HEART_EYES";
       this.message = "Браво! Го одбра точниот збор!";
       this.isCurrentQuestionAnsweredCorrectly = true;
+      this.shouldShowSoundButton = false;
     } else {
       this.mood = "CRYING";
       this.message = "Тоа не е точниот одговор. Пробај пак!";
+      this.shouldShowSoundButton = true;
     }
   }
 
@@ -99,5 +108,11 @@ export class RhymingTestPage implements OnInit {
 
   openTests() {
     this.router.navigate(['/tests']);
+  }
+
+  toggleSound(word: string) {
+    let audio = new Audio()
+    audio.src = "../../../../assets/audio/" + word.toLowerCase() + ".mp3"
+    audio.play()
   }
 }

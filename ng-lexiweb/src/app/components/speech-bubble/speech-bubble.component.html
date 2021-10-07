@@ -1,3 +1,9 @@
 <div class='bubble'>
   {{message}}
 </div>
+<div *ngIf='playSound'>
+  <button type="button" class="btn" (click)='toggleSound()'>
+    <fa-icon [icon]="faVolumeUp"></fa-icon>
+  </button>
+
+</div>

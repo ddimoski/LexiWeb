@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'speech-bubble',
@@ -8,10 +8,19 @@ import { UserService } from '../../services/user.service';
 })
 export class SpeechBubbleComponent implements OnInit {
   @Input() message: string;
+  @Input() playSound = false
+  @Input() fileName: string
+  faVolumeUp = faVolumeUp
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  toggleSound() {
+    let audio = new Audio()
+    audio.src = "../../../assets/audio/" + this.fileName + ".mp3" //this.fileLocation
+    audio.play()
   }
 }

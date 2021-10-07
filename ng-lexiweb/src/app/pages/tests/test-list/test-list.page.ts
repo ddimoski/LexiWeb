@@ -33,4 +33,9 @@ export class TestListPage implements OnInit {
   openTest(id: number) {
     this.router.navigate([`/test/${id}`])
   }
+
+  openInstructions() {
+    this.router.navigate([`/instructions`])
+
+  }
 }

@@ -1,19 +1,28 @@
 <div class='container'>
 
   <div *ngIf='this.test' class='m-5'>
-    <lexi [mood]='this.mood'
-          [message]='this.message'>
-    </lexi>
-    <div *ngFor='let word of availableWords' class='m-3 pl-2 pr-2 center-content'>
-      <button type="button" class="btn btn-color btn-width" (click)='checkIfCorrect(word)'>{{word}}</button>
-    </div>
-    <div *ngIf='isCurrentQuestionAnsweredCorrectly' class='m-5 pl-2 pr-2 center-content'>
-      <button type="button" class="btn btn-color next-question-btn" (click)='nextQuestion()'>Оди на наредно прашање</button>
-    </div>
-    <div *ngIf='showBackToTestsButton' class='m-5 pl-2 pr-2 center-content'>
-      <button type="button" class="btn btn-color" (click)='openTests()'>Врати се назад на листата со тестови</button>
-    </div>
 
+    <div class=' center-content'>
+      <lexi [mood]='this.mood'
+            [message]='this.message'
+            [playSound]='this.shouldShowSoundButton'
+            [fileName]='this.fileName'>
+      </lexi>
+      <div *ngFor='let word of availableWords' class='m-3 pl-2 pr-2'>
+        <button type='button' class='btn btn-color btn-width' (click)='checkIfCorrect(word)'>{{word}}</button>
+        <button type='button' class='btn icon-custom' (click)='toggleSound(word)'>
+          <fa-icon [icon]='faVolumeUp'></fa-icon>
+        </button>
+      </div>
+
+      <div *ngIf='isCurrentQuestionAnsweredCorrectly' class='m-5 pl-2 pr-2 pd-5'>
+        <button type='button' class='btn btn-color next-question-btn' (click)='nextQuestion()'>Оди на наредно прашање
+        </button>
+      </div>
+      <div *ngIf='showBackToTestsButton' class='m-5 pl-2 pr-2 center-content'>
+        <button type='button' class='btn btn-color btn-custom' (click)='openTests()'>Врати се назад на листата со тестови</button>
+      </div>
+    </div>
   </div>
 
 </div>

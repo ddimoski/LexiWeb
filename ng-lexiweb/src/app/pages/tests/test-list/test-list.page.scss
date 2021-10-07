@@ -1,8 +1,37 @@
 .test {
-  border: black 2px solid;
-  border-radius: 25px;
+  //border: black 2px solid;
+  background-color: #A3D768;
+  border-radius: 0.7em;
   text-align: center;
   margin: auto;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  width: 80%;
+  //margin-bottom: 2em;
+  cursor: pointer;
+  font-size: large;
+}
+
+.test:hover {
+  //background-color: #b8f76f;
+}
+
+.btn-custom {
+  color: black;
+  font-size: large;
+}
+
+.instructions {
+  font-size: large;
+  padding: 1em;
+  text-align: center;
+  margin: auto;
+}
+
+.instructions-btn {
+  display: block !important;
+  margin: auto;
+  font-size: large;
+  padding-bottom: 0.5em;
+  border-radius: 0.4em;
 }

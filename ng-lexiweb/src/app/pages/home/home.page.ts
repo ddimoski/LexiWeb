@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../../services/token-storage.service';
 import { Router } from '@angular/router';
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'home',
@@ -11,6 +12,7 @@ export class HomePage implements OnInit {
   message: string;
   isLoggedIn: boolean
   mood: string = "BIG_SMILE";
+  faVolumeUp = faVolumeUp
 
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router) { }
@@ -19,7 +21,7 @@ export class HomePage implements OnInit {
     console.log(this.mood)
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-    if(this.isLoggedIn){
+    if(this.isLoggedIn) {
       this.mood = "SATISFIED";
       this.message = "Здраво, дали сакаш да почнеш со вежбање?";
     } else {

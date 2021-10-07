@@ -1,14 +1,29 @@
 .center-content {
   text-align: center;
   margin: auto;
+  position: relative;
+  padding-bottom: 40px;
 }
+
 
 .btn-width {
   width: 290px;
 }
 
 .next-question-btn {
-  background-color: white !important;
-  color: #66962f !important;
-  width: 290px;
+  //background-color: white !important;
+  //color: #66962f !important;
+  width: 80%;
+  font-size: large;
+  //margin-left: -10px;
+  padding-bottom: 0.7em;
+}
+
+.icon-custom {
+  margin-top: -0.4em;
+}
+
+.btn-custom {
+  font-size: large;
+  padding-bottom: 0.4em;
 }
