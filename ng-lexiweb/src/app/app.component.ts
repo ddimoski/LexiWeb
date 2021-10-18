@@ -27,4 +27,15 @@ export class AppComponent implements OnInit {
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+
+  openNavigation() {
+    const x = document.getElementById("navigationBar");
+    if (x != null) {
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+  }
 }
